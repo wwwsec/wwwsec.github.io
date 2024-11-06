@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeSWITCH 常用命令</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 3px;
+        }
+        .command-block {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #2980b9;
+        }
+        .command {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 5px 0;
+            display: inline-block;
+        }
+        .description {
+            color: #666;
+            margin-left: 10px;
+        }
+        .note {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FreeSWITCH 常用命令参考</h1>
+
+        <h2>1. 状态和监控命令</h2>
+        <div class="command-block">
+            <div><span class="command">status</span><span class="description">显示系统状态</span></div>
+            <div><span class="command">sofia status</span><span class="description">显示所有 SIP 配置文件状态</span></div>
+            <div><span class="command">sofia status profile internal</span><span class="description">显示内部配置文件状态</span></div>
+            <div><span class="command">sofia status profile internal reg</span><span class="description">显示所有注册用户</span></div>
+            <div><span class="command">show channels</span><span class="description">显示当前所有通道</span></div>
+            <div><span class="command">show calls</span><span class="description">显示当前所有通话</span></div>
+            <div><span class="command">show registrations</span><span class="description">显示所有注册信息</span></div>
+        </div>
+
+        <h2>2. 调试和日志命令</h2>
+        <div class="command-block">
+            <div><span class="command">console loglevel debug</span><span class="description">设置控制台日志级别为 debug</span></div>
+            <div><span class="command">sofia profile internal siptrace on</span><span class="description">开启 SIP 消息跟踪</span></div>
+            <div><span class="command">sofia profile internal siptrace off</span><span class="description">关闭 SIP 消息跟踪</span></div>
+            <div><span class="command">sofia tracelevel info</span><span class="description">设置 SIP 跟踪级别</span></div>
+        </div>
+
+        <h2>3. 用户管理命令</h2>
+        <div class="command-block">
+            <div><span class="command">sofia status profile internal user &lt;username&gt;</span><span class="description">查看特定用户状态</span></div>
+            <div><span class="command">reloadxml</span><span class="description">重新加载 XML 配置</span></div>
+            <div><span class="command">reload mod_sofia</span><span class="description">重新加载 SIP 模块</span></div>
+        </div>
+
+        <h2>4. 通话控制命令</h2>
+        <div class="command-block">
+            <div><span class="command">uuid_kill &lt;uuid&gt;</span><span class="description">终止特定通话</span></div>
+            <div><span class="command">uuid_transfer &lt;uuid&gt; &lt;dest&gt;</span><span class="description">转接通话</span></div>
+            <div><span class="command">uuid_hold</span><span class="description">保持通话</span></div>
+            <div><span class="command">uuid_record</span><span class="description">录音</span></div>
+        </div>
+
+        <h2>5. 系统管理命令</h2>
+        <div class="command-block">
+            <div><span class="command">version</span><span class="description">显示版本信息</span></div>
+            <div><span class="command">help</span><span class="description">显示帮助信息</span></div>
+            <div><span class="command">shutdown</span><span class="description">关闭 FreeSWITCH</span></div>
+            <div><span class="command">restart</span><span class="description">重启 FreeSWITCH</span></div>
+        </div>
+
+        <h2>6. 实时监控命令</h2>
+        <div class="command-block">
+            <div><span class="command">fsctl debug_level 0-10</span><span class="description">设置调试级别</span></div>
+            <div><span class="command">top</span><span class="description">显示系统资源使用情况</span></div>
+        </div>
+
+        <h2>7. 配置相关命令</h2>
+        <div class="command-block">
+            <div><span class="command">reload</span><span class="description">重新加载所有模块</span></div>
+            <div><span class="command">reloadacl</span><span class="description">重新加载访问控制列表</span></div>
+            <div><span class="command">reloadxml</span><span class="description">重新加载 XML 配置文件</span></div>
+        </div>
+
+        <h2>8. 故障排查命令</h2>
+        <div class="command-block">
+            <div><span class="command">sofia global siptrace on</span><span class="description">全局开启 SIP 跟踪</span></div>
+            <div><span class="command">sofia global siptrace off</span><span class="description">全局关闭 SIP 跟踪</span></div>
+            <div><span class="command">sofia loglevel all 9</span><span class="description">设置所有 SIP 相关日志级别为最高</span></div>
+        </div>
+
+        <h2>9. 性能监控命令</h2>
+        <div class="command-block">
+            <div><span class="command">fsctl memory</span><span class="description">显示内存使用情况</span></div>
+            <div><span class="command">fsctl max_sessions</span><span class="description">显示最大会话数</span></div>
+            <div><span class="command">fsctl sync_clock</span><span class="description">同步系统时钟</span></div>
+        </div>
+
+        <h2>10. 常用组合命令</h2>
+        <div class="command-block">
+            <div class="note">查看注册和通话情况：</div>
+            <div><span class="command">sofia status profile internal reg</span></div>
+            <div><span class="command">show calls</span></div>
+            
+            <div class="note">调试 SIP 问题：</div>
+            <div><span class="command">sofia global siptrace on</span></div>
+            <div><span class="command">console loglevel debug</span></div>
+            <div><span class="command">sofia loglevel all 9</span></div>
+            
+            <div class="note">重新加载配置：</div>
+            <div><span class="command">reloadxml</span></div>
+            <div><span class="command">reload mod_sofia</span></div>
+        </div>
+    </div>
+</body>
+</html> 
